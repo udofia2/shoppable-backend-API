@@ -11,7 +11,7 @@ const productActions = (Products) => {
     }
   };
 
-  const product = (req, res) => {
+  const product = async (req, res) => {
     try{
         const product = await Products.find(req.params.productID)
           res.status(200).json(product)
@@ -49,8 +49,14 @@ const productActions = (Products) => {
   };
 
   const edit = async (req, res) => {
-      try
-      const product = await Products.findByIdAndUpdate(req.params.productID, {$set: req.body})
+      try {
+        const product = await Products.findByIdAndUpdate(req.params.productID, {$set: req.body})
+        res.status(200).json({
+          msg: `${product.name} updated successfully`
+        })
+      } catch(err) {
+        res.status(500).json(err)
+      }
   }
 
   const del = async (req, res) => {
