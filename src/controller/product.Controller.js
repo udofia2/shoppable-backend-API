@@ -1,11 +1,24 @@
 const productActions = (Products) => {
   const products = async (req, res) => {
-    const products = await Products.find({}).select(
-      "-createdAt -updatedAt -__v"
-    );
-    res.json(products);
+    try {
+        const products = await Products.find({}).select(
+          "-createdAt -updatedAt -__v"
+        );
+        res.status(200).json({ Total: products.length, products });
+        
+    } catch (err) {
+        res.status(500).json(err)        
+    }
   };
 
+  const product = (req, res) => {
+    try{
+        const product = await Products.find(req.params.productID)
+          res.status(200).json(product)
+    }  catch(err) {
+        res.status(500).json(err)
+    }
+  }
   const create = async (req, res) => {
     try {
       const {
@@ -35,19 +48,25 @@ const productActions = (Products) => {
     }
   };
 
+  const edit = async (req, res) => {
+      try
+      const product = await Products.findByIdAndUpdate(req.params.productID, {$set: req.body})
+  }
+
   const del = async (req, res) => {
-      try {
-          const product = await Products.findByIdAndDelete(req.params.productID);
-          res.json({ msg: `${product.name} successfully deleted` });
-          
-      } catch (err) {
-          res.json(err)
-      }
+    try {
+      const product = await Products.findByIdAndDelete(req.params.productID);
+      res.json({ msg: `${product.name} successfully deleted` });
+    } catch (err) {
+      res.json(err);
+    }
   };
   return {
     products,
+    product,
     create,
-    del
+    edit,
+    del,
   };
 };
 
