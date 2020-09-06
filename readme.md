@@ -5,7 +5,7 @@ This API is built with the following technologies
 - [Nodejs](https://nodejs.org)
 - [Mongodb](https://mongoosejs.com)
 - [Mogoose](https://mongodb.com)
-- [JavaScript] (https://developer.mozilla.org/en-US/)
+- [JavaScript](https://developer.mozilla.org/en-US/)
 <!-- GETTING STARTED -->
 
 ## Getting Started
