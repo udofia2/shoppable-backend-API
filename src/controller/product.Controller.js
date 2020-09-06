@@ -57,7 +57,6 @@ const productActions = (Products) => {
         brand,
         rating,
         numReviews,
-        image,
       });
 
       await product.save();
