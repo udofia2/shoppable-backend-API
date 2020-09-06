@@ -25,7 +25,6 @@ const productActions = (Products) => {
       const product = await Products.findById(req.params.productID);
 
       res.status(200).json({
-        msg: "Item found",
         product,
       });
     } catch (err) {
