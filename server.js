@@ -9,6 +9,6 @@ app.use(bodyParser.json())
 app.use(express.urlencoded({extended: true}))
 
 
-app.use('/product', require('./src/routes/product.route'))
+app.use('/api/v1/product', require('./src/routes/product.route'))
 
 app.listen(PORT, ()=>console.log(`Server is started on ${url}:${PORT}`))
