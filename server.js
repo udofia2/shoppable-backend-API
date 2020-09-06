@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const { PORT, url } = require('./src/config/env')
+require('./src/config/database')()
 
 const app = express()
 
